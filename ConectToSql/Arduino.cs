@@ -9,7 +9,7 @@ namespace ConectToSql
 {
     class Arduino
     {
-        public static string GetData(string _s)
+        public string GetData(string _s)
         {
             if (_s == "null")
             {
@@ -27,7 +27,7 @@ namespace ConectToSql
             }
         }
 
-        public static string GetPort()
+        public string GetPort()
         {
             string[] ports = SerialPort.GetPortNames();      //array of ports to be checked
 

@@ -11,12 +11,14 @@ namespace ConectToSql
 {
     class Sql
     {
+       
 
-        public static void OnceEveryFiveMinutes(object source, ElapsedEventArgs e)
+        public void OnceEveryFiveMinutes(object source, ElapsedEventArgs e)
         {
+            Arduino Rev3 = new Arduino();
             //  string connectionString = (@"Data Source = LENOVO\SQLEXPRESS; Integrated Security = False; User ID = sa; Password = reppla; Connect Timeout = 15; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite;Initial Catalog = chickubator; MultiSubnetFailover = False");
             string connectionString = ConfigurationManager.ConnectionStrings["server"].ToString();
-            string reply = Arduino.GetData(Arduino.GetPort());      //geting data(string) from arduino
+            string reply = Rev3.GetData(Rev3.GetPort());      //geting data(string) from arduino
             string t, h, s;
             t = reply.Substring(0, 4);      //temperature
             h = reply.Substring(5, 4);      //humidity
