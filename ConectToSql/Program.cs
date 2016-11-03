@@ -17,7 +17,7 @@ namespace chickubator
         static void Main()
         {
             Arduino Rev3 = new Arduino();
-            Sql Server = new Sql();
+            Sql Server = new Sql(Rev3.GetData(Rev3.GetPort()));
             int interval = 100000;      //set timer interval
             myTimer = new Timer(interval);
             myTimer.Elapsed += new ElapsedEventHandler(Server.OnceEveryFiveMinutes);  //trigering event after interval
