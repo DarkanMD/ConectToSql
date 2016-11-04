@@ -13,14 +13,13 @@ namespace ConectToSql
     {
         string reply;
 
-        public Sql(string s)
+        public void SetReply(string s)
         {
             reply = s;
         }
+
         public void OnceEveryFiveMinutes(object source, ElapsedEventArgs e)
         {
-        
-            //  string connectionString = (@"Data Source = LENOVO\SQLEXPRESS; Integrated Security = False; User ID = sa; Password = reppla; Connect Timeout = 15; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite;Initial Catalog = chickubator; MultiSubnetFailover = False");
             string connectionString = ConfigurationManager.ConnectionStrings["server"].ToString();
             string t, h, s;
             t = reply.Substring(0, 4);      //temperature

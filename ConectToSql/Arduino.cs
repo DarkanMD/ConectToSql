@@ -9,11 +9,11 @@ namespace ConectToSql
 {
     class Arduino
     {
-        public string GetData(string _s)
+        public string GetData(string _s)        //accessing the board 
         {
             if (_s == "null")
             {
-                throw new System.ArgumentException("Port not found");
+                throw new System.ArgumentException("Port not found");       //in case we didn't find any ports
             }
             else
             {
