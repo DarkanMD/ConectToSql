@@ -24,6 +24,15 @@ namespace ConectToSql
                 Arduino.Open();
                 Arduino.Write("Data");
                 reply = Arduino.ReadLine();
+                double x;
+                if (reply.Length !=11)
+                {
+                    throw new ArgumentException("Invalid message lenght");
+                }
+          /*      if (Double.TryParse(reply.Substring(0, 4),out x) || Double.TryParse(reply.Substring(5, 4), out x))
+                {
+                    throw new ArgumentException("Invalid data type");
+                } */
                 Arduino.Close();
                 return reply;
             }
