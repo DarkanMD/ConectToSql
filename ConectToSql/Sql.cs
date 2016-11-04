@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ConectToSql;
 using System.Data.SqlClient;
-using System.Timers;
 using System.Configuration;
 
 namespace ConectToSql

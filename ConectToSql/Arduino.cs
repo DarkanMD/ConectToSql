@@ -10,7 +10,7 @@ namespace ConectToSql
     class Arduino
     {
 
-        string port = GetPort();
+        string port = GetPort();        //asigning port
         public string GetData()        //accessing the board 
         {
             if (port == "null")
@@ -25,19 +25,21 @@ namespace ConectToSql
                 Arduino.Write("Data");
                 reply = Arduino.ReadLine();
                 double x;
-                if (reply.Length !=11)
+                if (reply.Length >12 || reply.Length<12)
                 {
                     throw new ArgumentException("Invalid message lenght");
                 }
-          /*      if (Double.TryParse(reply.Substring(0, 4),out x) || Double.TryParse(reply.Substring(5, 4), out x))
+                if (Double.TryParse(reply.Substring(0, 4), out x) || Double.TryParse(reply.Substring(5, 4), out x))
+                { }
+                else
                 {
                     throw new ArgumentException("Invalid data type");
-                } */
+               } 
                 Arduino.Close();
                 return reply;
             }
         }
-
+        //code to determine the port where arduino is connected
         static string GetPort()
         {
             string[] ports = SerialPort.GetPortNames();      //array of ports to be checked

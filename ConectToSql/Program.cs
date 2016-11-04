@@ -1,13 +1,10 @@
 ﻿using ConectToSql;
 using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Timers;
-using System.Configuration;
+
 
 namespace chickubator
 {
-
     class Program
     {
         private static Timer myTimer;  //create timer
@@ -19,7 +16,7 @@ namespace chickubator
             Console.WriteLine("Let get the Party Started....");
             MyTimer(30000);                                      //start the timer with interval that will triger the read/write procces
 
-          //  GC.KeepAlive(myTimer);              //tell GC not to touch it(myTimer)
+            GC.KeepAlive(myTimer);              //tell GC not to touch it(myTimer)
 
             Console.ReadLine();
         }
