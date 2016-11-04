@@ -13,12 +13,12 @@ namespace ConectToSql
     {
         string reply;
 
-        public void SetReply(string s)
+        public void Message(string s)
         {
             reply = s;
         }
 
-        public void OnceEveryFiveMinutes(object source, ElapsedEventArgs e)
+        public void OnceEveryFiveMinutes()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["server"].ToString();
             string t, h, s;
