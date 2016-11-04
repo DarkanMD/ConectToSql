@@ -9,15 +9,17 @@ namespace ConectToSql
 {
     class Arduino
     {
-        public string GetData(string _s)        //accessing the board 
+
+        string port = GetPort();
+        public string GetData()        //accessing the board 
         {
-            if (_s == "null")
+            if (port == "null")
             {
                 throw new System.ArgumentException("Port not found");       //in case we didn't find any ports
             }
             else
             {
-                SerialPort Arduino = new SerialPort(_s, 9600);  //asigning the working/curent port
+                SerialPort Arduino = new SerialPort(port, 9600);  //asigning the working/curent port
                 string reply;
                 Arduino.Open();
                 Arduino.Write("Data");
@@ -27,7 +29,7 @@ namespace ConectToSql
             }
         }
 
-        public string GetPort()
+        static string GetPort()
         {
             string[] ports = SerialPort.GetPortNames();      //array of ports to be checked
 

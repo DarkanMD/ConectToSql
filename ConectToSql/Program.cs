@@ -17,24 +17,29 @@ namespace chickubator
         static void Main()
         {
             Console.WriteLine("Let get the Party Started....");
-            int interval = 30000;      //set timer interval
-            myTimer = new Timer(interval);
-            myTimer.Elapsed += new ElapsedEventHandler(MyEvent);
-         //   myTimer.Elapsed += new ElapsedEventHandler(Server.OnceEveryFiveMinutes);  //trigering event after interval
-            myTimer.AutoReset = true;           //"loop" the timer
-            myTimer.Enabled = true;
-            myTimer.Start();                    //start the timer
-            GC.KeepAlive(myTimer);              //tell GC not to touch it(myTimer)
+            MyTimer(30000);                                      //start the timer with interval that will triger the read/write procces
+
+          //  GC.KeepAlive(myTimer);              //tell GC not to touch it(myTimer)
 
             Console.ReadLine();
         }
 
         static void MyEvent(object source, ElapsedEventArgs e)
         {
-            Server.Message(Rev3.GetData(Rev3.GetPort()));
+            Server.Message(Rev3.GetData());
             Server.OnceEveryFiveMinutes();
-            Console.WriteLine(Rev3.GetData(Rev3.GetPort()));                                   //test purpose only
+            Console.WriteLine(Rev3.GetData());                                   //test purpose only
         }
 
+        static void MyTimer(int interval)
+        {
+            myTimer = new Timer(interval);
+            myTimer.Elapsed += new ElapsedEventHandler(MyEvent);
+            //   myTimer.Elapsed += new ElapsedEventHandler(Server.OnceEveryFiveMinutes);  //trigering event after interval
+            myTimer.AutoReset = true;           //"loop" the timer
+            myTimer.Enabled = true;
+            myTimer.Start();                    //start the timer
+
+        }
     }
 }
